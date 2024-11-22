@@ -1,0 +1,85 @@
+<style>
+    table{
+        margin: auto;
+
+    }
+    .newone{
+        margin-top: 20px;
+    }
+    .hidden{
+        display: none;
+    }
+</style>
+
+<table border="2">
+    <h1 style="text-align: center;">Student Registration Form</h1>
+    <tr>
+        <td>Name</td>
+    <td><input type="text" id="name"></td>
+    </tr>
+    <tr>
+        <td>Age</td>
+        <td><input type="number" id="age"></td>
+    </tr>
+    <tr>
+        <td>Gender</td>
+        <td><input type="radio" name="gender" value="male" class="gender">Male
+            <input type="radio" name="gender" value="female" class="gender">Female
+        </td>
+    </tr>
+    <tr>
+        <td>Course</td>
+        <td><select class="option">
+            <option>JavaScript</option>
+            <option>Python</option>
+            <option>Full Stack Development</option>
+            <option>Type Script</option>
+        </td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td><input type="email" class="mail"></td>
+    </tr>
+    <tr>
+        <td colspan="2"><button class="save" style="background-color:aqua;width: 100%;">Save</button></td>
+    </tr>
+</table>
+
+
+<table class="newone hidden" border="2">
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Course</th>
+        <th>Email</th>
+        <th>Action</th>
+    </tr>
+
+</table>
+
+
+<script>
+    var btn=document.querySelector("button")
+    var one=document.querySelector(".newone")
+    let fullname=document.querySelector('#name')
+    var currect=document.querySelector("#age")
+    var gender=document.querySelector(".gender")
+    var course=document.querySelector(".option")
+    var email=document.querySelector(".mail")
+    
+    
+    
+    btn.addEventListener('click',function(){
+        one.classList.remove("hidden")
+        var li=document.createElement('tr')
+        li.innerHTML="<td>"+fullname.value+"</td>"+"<td>"+currect.value+"</td>"+"<td>" + document.querySelector('input[name="gender"]:checked').value + "</td>"+"<td>"+course.value+"</td>"+"<td>"+email.value+"</td>"+"<button onclick=deleterow(event)>Delete</button>"
+        one.append(li)
+    
+    })
+
+
+    function deleterow(event){
+        event.target.parentElement.remove()
+    }
+</script>
